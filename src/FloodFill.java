@@ -22,6 +22,9 @@ public class FloodFill {
     //Note the bottom corner is not colored 2, because it is not 4-directionally connected
     //to the starting pixel.
 
+
+    //method 1
+    //BFS
     public static void main(String[] args) {
 
     }
@@ -37,6 +40,7 @@ public class FloodFill {
         Queue<int[]> queue = new LinkedList<>();
         int[] dr = new int[]{1,-1,0,0};
         int[] dc = new int[]{0,0,1,-1};
+
         image[sr][sc] = newColor;
         queue.add(new int[]{sr,sc});
         visited[sr][sc] = true;
@@ -54,5 +58,37 @@ public class FloodFill {
             }
         }
         return image;
+    }
+
+    //method2
+    //DFS
+    //Time complexity: O(N)
+    //Space complexity: O(N) the size of the implicit call stack when calling dfs.
+    public int[][] floodFill2(int[][] image, int sr, int sc, int newColor){
+
+        int color = image[sr][sc];
+        if (color != newColor){
+            dfs(image, sr, sc, color, newColor);
+        }
+        return image;
+
+    }
+    public void dfs(int[][] image, int r, int c,int color, int newColor){
+        if (image[r][c] == color){
+            image[r][c] = newColor;
+            if (r>=1){
+                dfs(image,r-1, c, color, newColor);
+            }
+            if (c>=1){
+                dfs(image, r, c-1, color, newColor);
+            }
+            if (r+1<image.length){
+                dfs(image, r+1, c, color, newColor);
+            }
+            if (c+1 < image[0].length){
+                dfs(image, r, c+1, color, newColor);
+            }
+        }
+
     }
 }
