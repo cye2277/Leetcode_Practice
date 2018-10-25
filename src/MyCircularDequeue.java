@@ -106,6 +106,12 @@ public class MyCircularDequeue {
         if (this.size == 0){
             return false;
         }
+        if (this.size ==1){
+            head = null;
+            tail = null;
+            size--;
+            return true;
+        }
         tail.next = head.next;
         head.next.prev = tail;
         head = head.next;
@@ -119,6 +125,12 @@ public class MyCircularDequeue {
     public boolean deleteLast(){
         if (this.size == 0){
             return false;
+        }else if (this.size == 1){
+            head = null;
+            tail = null;
+            size--;
+            return true;
+
         }
         head.prev = tail.prev;
         tail.prev.next = head;
@@ -129,11 +141,17 @@ public class MyCircularDequeue {
     }
 
     public int getFront(){
+        if (size == 0){
+            return -1;
+        }
         return head.val;
 
     }
 
     public int getRear(){
+        if (size ==0){
+            return -1;
+        }
         return tail.val;
 
     }
