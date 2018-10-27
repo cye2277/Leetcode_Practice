@@ -28,12 +28,12 @@ public class TitleToNumber {
         String s = "A";
         String s2 = "AB";
         String s3 = "ZY";
-        System.out.println(totalToNumber(s));
-        System.out.println(totalToNumber(s2));
-        System.out.println(totalToNumber(s3));
+        System.out.println(titleToNumber(s));
+        System.out.println(titleToNumber(s2));
+        System.out.println(titleToNumber(s3));
 
     }
-    public static int totalToNumber(String s){
+    public static int titleToNumber(String s){
         int result = 0;
         for (int i = 0; i < s.length();  i++){
             result = result * 26 + (s.charAt(i) - 'A' + 1);
