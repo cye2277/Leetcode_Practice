@@ -55,7 +55,7 @@ public class ReverseLinkedlist {
     //space complexity: O(1)
 
     public static ListNode reverseList2(ListNode head){
-        return reverseListInt(head, 0);
+        return reverseListInt(head, null);
     }
 
     public static ListNode reverseListInt(ListNode head, ListNode newhead){
