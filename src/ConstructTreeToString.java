@@ -27,7 +27,7 @@ public class ConstructTreeToString {
     //iteration
 
     public static String tree2str2(TreeNode t){
-        if (t == null){return ""}
+        if (t == null){return "";}
         Stack<TreeNode> stack = new Stack<>();
         HashSet<TreeNode> visited = new HashSet<>();
         StringBuilder ans = new StringBuilder();
@@ -49,12 +49,12 @@ public class ConstructTreeToString {
                     stack.push(t.right);
                 }
                 if (node.left != null){
-                    stack.push(t.left)
+                    stack.push(t.left);
                 }
             }
 
         }
-         return ans.substring(1, ans.length() - 1);;
+         return ans.substring(1, ans.length() - 1);
 
     }
 
