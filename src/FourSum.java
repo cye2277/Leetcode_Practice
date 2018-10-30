@@ -23,16 +23,16 @@ public class FourSum {
 
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
         HashMap<Integer,Integer> hashMap = new HashMap<>();
-        for (int i =0; i<C.;i++){
-            for (int j = 0; j<2;j++){
+        for (int i =0; i<C.length;i++){
+            for (int j = 0; j<D.length;j++){
                 int sum = C[i]+D[j];
                 hashMap.put(sum,hashMap.getOrDefault(sum,0)+1);
             }
         }
         int ans = 0;
 
-        for (int i = 0; i<2;i++){
-            for (int j = 0; j<2; j++){
+        for (int i = 0; i<A.length;i++){
+            for (int j = 0; j<B.length; j++){
                 int sum = A[i]+B[j];
                 ans += hashMap.getOrDefault(-1*sum,0);
             }
