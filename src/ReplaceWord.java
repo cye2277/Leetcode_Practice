@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ReplaceWord {
@@ -25,7 +24,7 @@ public class ReplaceWord {
         dict.add("cat");
         dict.add("bat");
         dict.add("rat");
-        String s = "the cattle was rattled by the battery"
+        String s = "the cattle was rattled by the battery";
     }
     public String replaceWords(List<String> dict, String sentence) {
         String ans;
