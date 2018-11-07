@@ -1,7 +1,6 @@
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.Map;
 
 public class EmployeeImportance {
 
@@ -17,25 +16,17 @@ public class EmployeeImportance {
 
     //Time complexity: O(N)
     //Space complexity: O(N)
-    public int getImportance(List<Employee> employees, int id) {
-        HashMap<Integer, Employee> hashMap = new HashMap<>();
-        for (Employee employee:employees){
-            hashMap.put(employee.id,employee);
-        }
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(id);
-        int ans = 0;
-        while (!queue.isEmpty()){
-            Employee target  = new Employee();
-            int i = queue.poll();
-            for (Employee e: employees){
-                target = hashMap.get(i);
-            }
-            ans += target.importance;
-            for (int suborId :target.subordinates){
-                queue.add(suborId);
-            }
-        }
+    Map<Integer, Employee> emap;
+    public int getImportance(List<Employee> employees, int queryid) {
+        emap = new HashMap();
+        for (Employee e: employees) emap.put(e.id, e);
+        return dfs(queryid);
+    }
+    public int dfs(int eid) {
+        Employee employee = emap.get(eid);
+        int ans = employee.importance;
+        for (Integer subid: employee.subordinates)
+            ans += dfs(subid);
         return ans;
     }
 }

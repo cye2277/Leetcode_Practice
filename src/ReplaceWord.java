@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ReplaceWord {
     //In English, we have a concept called root, which can be followed by some other words to form another longer word - let's call this word successor. For example, the root an, followed by other, which can form another word another.
@@ -26,18 +28,20 @@ public class ReplaceWord {
         dict.add("rat");
         String s = "the cattle was rattled by the battery";
     }
-    public String replaceWords(List<String> dict, String sentence) {
-        String ans;
-        String[] stringArr = sentence.split(" ");
-        for (int i = 0;i<stringArr.length;i++){
-            String prefix;
-            for (String s: dict){
-                if(stringArr[i].contains(s)&& stringArr[i].charAt(0) == s.charAt(0)){
-                    stringArr[i] = s;
-                }
+    public String replaceWords(List<String> roots, String sentence) {
+        Set<String> rootset = new HashSet();
+        for (String root: roots) rootset.add(root);
+
+        StringBuilder ans = new StringBuilder();
+        for (String word: sentence.split("\\s+")) {
+            String prefix = "";
+            for (int i = 1; i <= word.length(); ++i) {
+                prefix = word.substring(0, i);
+                if (rootset.contains(prefix)) break;
             }
+            if (ans.length() > 0) ans.append(" ");
+            ans.append(prefix);
         }
-        ans = String.join(" ", stringArr);
-        return ans;
+        return ans.toString();
     }
 }

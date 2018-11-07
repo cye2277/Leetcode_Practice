@@ -28,7 +28,7 @@ public class CombinationSum2 {
         if(k == tmp.size() && n==0){
             ans.add(new ArrayList<>(tmp));
         }
-        for (int i = start; i<=9;i++){
+        for (int i = start; i<=9; i++){
             tmp.add(i);
             helper(ans, k,n-i,tmp,i+1);
             tmp.remove(tmp.size()-1);
