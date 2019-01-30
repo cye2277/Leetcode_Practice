@@ -85,7 +85,24 @@ public class MyHashMap<K,V> {
     }
 
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
-    public void remove(int key) {
+    public void remove(K key) {
+        int bucket = getHash(key) % getBucketSize();
+        Entry existing = buckets[bucket];
+        Entry prev = null;
+        if (existing == null){
+            return;
+        }
+        if (existing.id == key){
+            existing.next = null;
+        }
+        while (existing.next != null){
+            prev = existing;
+            existing = existing.next;
+            if (existing.id == key){
+                prev.next = existing.next;
+            }
 
+
+        }
     }
 }
