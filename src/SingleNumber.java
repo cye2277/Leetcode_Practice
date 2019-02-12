@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class SingleNumber {
     //Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
@@ -11,7 +12,28 @@ public class SingleNumber {
     //
     //The order of the result is not important. So in the above example, [5, 3] is also correct.
 
-    public int[] singleNumber(int[] nums) {
+
+    public int[] singleNumber1(int[] nums) {
+        int[] ans = new int[2];
+        if(nums == null || nums.length <=1){
+            return ans;
+        }
+
+        HashSet<Integer> record = new HashSet<Integer>();
+        for(int i = 0;i<nums.length;i++){
+            if(record.contains(nums[i])){
+                record.remove(nums[i]);
+            }
+            else{
+                record.add(nums[i]);
+            }
+        }
+        Object[] test = record.toArray();
+        ans[0]=(int)test[0];
+        ans[1]=(int)test[1];
+        return ans;
+    }
+    public int[] singleNumber2(int[] nums) {
         int n = nums.length;
         int[] ans = new int[2];
         Arrays.sort(nums);
@@ -34,4 +56,7 @@ public class SingleNumber {
         return ans;
 
     }
+
+
+
 }
