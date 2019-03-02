@@ -31,7 +31,7 @@ public class LargeGroupPosition {
     //
     //Note:  1 <= S.length <= 1000
 
-    
+
     public List<List<Integer>> largeGroupPositions(String S) {
         List<List<Integer>> ans = new ArrayList<>();
         int i = 0;
