@@ -12,6 +12,8 @@ public class DiameterOfBinaryTree {
     //
     //Note: The length of path between two nodes is represented by the number of edges between them.
 
+    //Time complexity:O(N)
+    //Space complexity:O(N)
     public class TreeNode {
         int val;
         TreeNode left;
