@@ -16,6 +16,10 @@ public class MaxProfiStock {
     //Input: [7,6,4,3,1]
     //Output: 0
     //Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+    //two pass
+    //Time complexity:O(N*N)
+    //Space complexity:O(1)
     public int maxProfit(int[] prices) {
         int ans = 0;
         for (int i = 0; i< prices.length;i++){
@@ -26,6 +30,23 @@ public class MaxProfiStock {
             }
         }
         return ans;
+    }
+
+
+    //One pass
+    //Time complexitu:O(N)
+    //Space complexity:O(1)
+    public int maxProfit2(int[] prices) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int i = 0; i< prices.length;i++){
+            if (prices[i]<minprice){
+                minprice = prices[i];
+            }else if (prices[i]-minprice>maxprofit){
+                maxprofit = prices[i]-minprice;
+            }
+        }
+        return maxprofit;
     }
 }
 
