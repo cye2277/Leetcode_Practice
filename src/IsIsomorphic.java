@@ -20,7 +20,7 @@ public class IsIsomorphic {
     //Output: true
     //Note:
     //You may assume both s and t have the same length
-    
+
     public boolean isIsomorphic(String s, String t) {
         int[] a = new int[256];
         int[] b = new int[256];
