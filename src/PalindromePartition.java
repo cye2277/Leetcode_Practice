@@ -8,7 +8,7 @@ public class PalindromePartition {
     //
     //Example:
     //
-    //Input: "aabbc"
+    //Input: "aab"
     //Output:
     //[
     //  ["aa","b"],
