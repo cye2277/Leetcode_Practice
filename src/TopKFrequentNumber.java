@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TopKFrequentNumber {
 
@@ -38,5 +36,62 @@ public class TopKFrequentNumber {
             k--;
         }
         return ans;
+    }
+
+
+    //PriorityQueue
+    //TIME COMPLEXITY:O(N*LOGK)
+    //SAPCE COMPLEXITY:O(N)
+    public List<Integer> topKFrequent2(int[] nums, int k) {
+        HashMap<Integer, Integer> hashmap  = new HashMap();
+        for (int num: nums){
+            hashmap.put(num, hashmap.getOrDefault(num,0)+1);
+        }
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>(
+                (w1,w2) -> hashmap.get(w1) -hashmap.get(w2)
+        );
+
+        for (int num: hashmap.keySet()){
+            heap.add(num);
+            if (heap.size()>k){
+                heap.poll();
+            }
+        }
+
+        List<Integer> ans = new ArrayList();
+        while(!heap.isEmpty()){
+            ans.add(heap.poll());
+        }
+        Collections.reverse(ans);
+        return ans;
+
+    }
+
+    //BUCKET SORT
+    public List<Integer> topKFrequent3(int[] nums, int k) {
+
+        List<Integer>[] bucket = new List[nums.length + 1];
+        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+
+        for (int n : nums) {
+            frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+        }
+
+        for (int key : frequencyMap.keySet()) {
+            int frequency = frequencyMap.get(key);
+            if (bucket[frequency] == null) {
+                bucket[frequency] = new ArrayList<>();
+            }
+            bucket[frequency].add(key);
+        }
+
+        List<Integer> res = new ArrayList<>();
+
+        for (int pos = bucket.length - 1; pos >= 0 && res.size() < k; pos--) {
+            if (bucket[pos] != null) {
+                res.addAll(bucket[pos]);
+            }
+        }
+        return res.subList(0,k);
     }
 }

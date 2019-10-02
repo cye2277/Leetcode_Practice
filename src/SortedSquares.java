@@ -36,7 +36,7 @@ public class SortedSquares {
 
     //Time complexity:O(N)
     //Space Complexity:O(N)
-    public int[] sortedSquares(int[] A) {
+    public int[] sortedSquares1(int[] A) {
         int N = A.length;
         int i = 0;
         int j = N-1;
